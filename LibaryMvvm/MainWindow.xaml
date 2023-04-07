@@ -1,0 +1,31 @@
+﻿<Window x:Class="LibaryMvvm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibaryMvvm"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:controls="clr-namespace:LibaryMvvm.Views"
+        >
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://wattention.com/wp-content/uploads/2018/04/Books-and-coffee.jpg"></ImageBrush>
+        </Grid.Background>
+        <TabControl>
+            <TabControl.Background>
+                <ImageBrush/>
+            </TabControl.Background>
+            <TabItem Header="Add">
+                <controls:AddReadingProductView />
+            </TabItem>
+            <TabItem Header="Report">
+                <controls:Report />
+            </TabItem>
+            <TabItem Header="Edit">
+                <controls:EditView />
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+</Window>

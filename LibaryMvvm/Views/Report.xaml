@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="LibaryMvvm.Views.Report"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibaryMvvm.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Report}"
+             >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding allItems}" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+
+        <ListBox Grid.Column="4" Grid.RowSpan="3">
+            <CheckBox Name="Isbn" Content="Isbn"  IsChecked="{Binding Options[0], Mode=TwoWay}"/>
+            <CheckBox Name="Name" Content="Name"  IsChecked="{Binding Options[1], Mode=TwoWay}"/>
+            <CheckBox Name="Type" Content="Type"  IsChecked="{Binding Options[2], Mode=TwoWay}"/>
+            <CheckBox Name="Discount" Content="Discount"  IsChecked="{Binding Options[3], Mode=TwoWay}"/>
+            <CheckBox Content="All" IsChecked="{Binding Options[4], Mode=TwoWay}"/>
+        </ListBox>
+        
+        <TextBlock Text="Isbn" Grid.Column="2" Grid.Row="3" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+        <TextBox Text="{Binding Input[0]}" IsEnabled="{Binding ElementName=Isbn,Path=IsChecked}" Width="266" Height="50" Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" FontSize="25" MaxLength="13" PreviewTextInput = "NumberValidationTextBox"/>
+        
+        <TextBlock Text="Name" Grid.Column="2" Grid.Row="5"  FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+        <TextBox Text="{Binding Input[1]}" IsEnabled="{Binding ElementName=Name,Path=IsChecked}" Width="266" Height="50" Grid.Column="2" Grid.Row="6" VerticalAlignment="Top" FontSize="25" MaxLength="20" PreviewTextInput="LettersValidationTextBox"/>
+       
+        <TextBlock Text="Type" Grid.Column="2" Grid.Row="7"  FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+        <TextBox Text="{Binding Input[2]}" IsEnabled="{Binding ElementName=Type,Path=IsChecked}"  Width="266" Height="50" Grid.Column="2" Grid.Row="8" VerticalAlignment="Top" FontSize="25" MaxLength="10" PreviewTextInput="LettersValidationTextBox"/>
+        
+        <TextBlock Text="Discount" Grid.Column="2" Grid.Row="9"  FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <TextBox Text="{Binding Input[3]}" IsEnabled="{Binding ElementName=Discount,Path=IsChecked}" Width="266" Height="35" Grid.Column="2" Grid.Row="10" VerticalAlignment="Top" FontSize="25" MaxLength="2" PreviewTextInput = "NumberValidationTextBox"/>
+        
+        <Button Content="Search" Command="{Binding FilterCommand}" Grid.Column="2" Grid.Row="11" FontSize="20" Height="40" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>

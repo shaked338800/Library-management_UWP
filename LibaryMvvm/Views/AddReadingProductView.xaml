@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="LibaryMvvm.Views.AddReadingProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibaryMvvm.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=ReadingProduct}"
+             >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <RadioButton x:Name="Book" FontSize="20" IsChecked="{Binding Book,Mode=TwoWay}">Book</RadioButton>
+        <RadioButton x:Name="Journal" FontSize="20" Grid.Column="1" IsChecked="{Binding Journal,Mode=TwoWay}">Journal</RadioButton>
+
+        <TextBlock Text="Isbn:" Grid.Row="2" Width="80" Height="40" FontSize="30" Background="#FFB59696"/>
+        <TextBox Width="266" Height="40" Grid.Row="2" Grid.Column="2" Text="{Binding Serial,Mode=TwoWay}" FontSize="30" MaxLength="13" Grid.ColumnSpan="3" HorizontalAlignment="Left" PreviewTextInput = "NumberValidationTextBox"/>
+
+        <TextBlock Text="Name:" Grid.Column="0" Grid.Row="3" Width="90" Height="40" FontSize="30" Background="#FFB99A9A"/>
+        <TextBox Text="{Binding Name,Mode=TwoWay}" MaxLength="20" Width="266" Height="40" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Left" FontSize="25" PreviewTextInput="LettersValidationTextBox"/>
+
+        <TextBlock Text="Publish Date:" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Height="40" FontSize="30" Background="#FFC7A5A5" />
+        <DatePicker DisplayDateEnd="{Binding DateTime}"  SelectedDate="{Binding DateTime, Mode=TwoWay}"  Width="160" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center"  Grid.Row="4" Grid.Column="2" Margin="0,10,0,0" Grid.RowSpan="2"/>
+
+        <TextBlock Text="Title:" Grid.Column="0" Grid.Row="5" Width="80" Height="40" FontSize="30" Background="#FFB39090"/>
+        <TextBox Text="{Binding Title,Mode=TwoWay}" MaxLength="20" Width="266" Grid.ColumnSpan="3" Height="40" Grid.Column="2" Grid.Row="5" FontSize="25" HorizontalAlignment="Left"  PreviewTextInput="LettersValidationTextBox"/>
+
+        <TextBlock Text="Categories:" Grid.Column="4" Grid.Row="0" Width="150" Height="40" FontSize="30" HorizontalAlignment ="Center" Background="#FFC19E9E" />
+        <ListBox IsEnabled="{Binding ElementName=Book,Path=IsChecked}" Grid.Column="4" Grid.Row="1" Grid.RowSpan="5">
+
+            <CheckBox Content="Other"  IsChecked="{Binding Categories[0], Mode=TwoWay}"/>
+            <CheckBox Content="Adventure"  IsChecked="{Binding Categories[1], Mode=TwoWay}"/>
+            <CheckBox Content="Action"     IsChecked="{Binding Categories[2], Mode=TwoWay}"/>
+            <CheckBox Content="Classics"   IsChecked="{Binding Categories[3], Mode=TwoWay}"/>
+            <CheckBox Content="Fantasy"    IsChecked="{Binding Categories[4], Mode=TwoWay}"/>
+            <CheckBox Content="Horror"     IsChecked="{Binding Categories[5], Mode=TwoWay}"/>
+            <CheckBox Content="Comics"     IsChecked="{Binding Categories[6], Mode=TwoWay}"/>
+            <CheckBox Content="Comedy"     IsChecked="{Binding Categories[7], Mode=TwoWay}"/>
+            <CheckBox Content="ScienceFiction"     IsChecked="{Binding Categories[8], Mode=TwoWay}"/>
+            <CheckBox Content="Detective"     IsChecked="{Binding Categories[9], Mode=TwoWay}"/>
+            <CheckBox Content="Mystery"     IsChecked="{Binding Categories[10], Mode=TwoWay}"/>
+            <CheckBox Content="HistoricalFiction"     IsChecked="{Binding Categories[11], Mode=TwoWay}"/>
+        </ListBox>
+
+        <TextBlock Text="Categories:" Grid.Column="4" Grid.Row="6" Width="150" Height="40" FontSize="30" HorizontalAlignment ="Center" Background="#FFBB9797" />
+        <ListBox IsEnabled="{Binding ElementName=Journal,Path=IsChecked}" Grid.Column="4" Grid.Row="7" Grid.RowSpan="10">
+            <CheckBox Content="Other"  IsChecked="{Binding Categories[0], Mode=TwoWay}"/>
+            <CheckBox Content="CookingBook "  IsChecked="{Binding Categories[1], Mode=TwoWay}"/>
+            <CheckBox Content="Comics "     IsChecked="{Binding Categories[2], Mode=TwoWay}"/>
+            <CheckBox Content="Poetry"   IsChecked="{Binding Categories[3], Mode=TwoWay}"/>
+            <CheckBox Content="NewsPaper "    IsChecked="{Binding Categories[4], Mode=TwoWay}"/>
+            <CheckBox Content="TravelGuildes "     IsChecked="{Binding Categories[5], Mode=TwoWay}"/>
+        </ListBox>
+
+        <TextBlock Text="Price:" Grid.Column="0" Grid.Row="6" Width="80" Height="40" FontSize="30" Background="#FFB38F8F"/>
+        <TextBox Text="{Binding Price,Mode=TwoWay}" MaxLength="7" Width="266" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="6" FontSize="30" HorizontalAlignment="Left"  PreviewTextInput = "NumberValidationTextBox"/>
+
+        <TextBlock Text="Discount:" Grid.Column="0" Grid.Row="7" Width="130" Height="40" FontSize="30" Background="#FFB99494"/>
+        <TextBox Text="{Binding Discount,Mode=TwoWay}" Width="266" Grid.ColumnSpan="3" Height="40" Grid.Column="2" Grid.Row="7" FontSize="30" HorizontalAlignment="Left"  PreviewTextInput = "NumberValidationTextBox" MaxLength="2"/>
+
+        <TextBlock Text="Edition:" Grid.Column="0" Grid.Row="8" Width="100" Height="40" FontSize="30" Background="#FFB99494"/>
+        <TextBox Text="{Binding Edition,Mode=TwoWay}" MaxLength="20" Width="266" Grid.ColumnSpan="3" Height="40" Grid.Column="2" Grid.Row="8" FontSize="25" HorizontalAlignment="Left"  PreviewTextInput="LettersValidationTextBox"/>
+
+        <TextBlock Text="Authuor:" Grid.Column="0" Grid.Row="9" Width="130" Height="40" FontSize="30" Background="#FFBB9D9D"/>
+        <TextBox IsEnabled="{Binding ElementName=Book,Path=IsChecked}" Text="{Binding Authuor,Mode=TwoWay}" MaxLength="20" Width="266" Grid.ColumnSpan="3" Height="50" Grid.Column="2" Grid.Row="9" FontSize="25" HorizontalAlignment="Left"  PreviewTextInput = "LettersValidationTextBox"/>
+
+        <Button Content="Add" Grid.Column="2" Grid.Row="10" FontSize="25" Command="{Binding EditItemCommend,Mode=TwoWay}"/>
+    </Grid>
+</UserControl>
